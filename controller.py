@@ -831,7 +831,7 @@ class WMain(QWidget):
 	def click_btnSlew(self):
 		if self.synced == False:
 			self.warn(txt['notsynced'])
-			return
+			#return
 		if selectedobj != None:
 
 			result = slew(selectedobj[2], selectedobj[3])
