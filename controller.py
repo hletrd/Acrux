@@ -18,7 +18,7 @@ v='0.2.2'
 
 txt = {
 	'inpserial': '시리얼 포트',
-	'title': 'ACrux ' + v,
+	'title': 'Acrux ' + v,
 	'connect': '연결',
 	'message': '메시지',
 	'quit': '종료하시겠습니까?',
