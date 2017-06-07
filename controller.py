@@ -174,7 +174,10 @@ def resource_path(relative_path):
 
 	return os.path.join(base_path, relative_path)
 
-print(sys._MEIPASS)
+try:
+	print(sys._MEIPASS)
+except:
+	pass
 
 try:
 	db = resource_path('dso.db')
@@ -453,15 +456,16 @@ class WMain(QWidget):
 
 		self.cmbSerial = QComboBox(self)
 		self.cmbSerial.addItems(serlist_cmb)
-		self.cmbSerial.resize(150, 20)
+		#self.cmbSerial.resize(150, 20)
 		#self.cmbSerial.move(15, 15)
+		self.cmbSerial.setMaximumSize(150, 50)
 		self.cmbSerial.setCurrentIndex(0)
 
 		self.layout1.addWidget(self.cmbSerial)
 
 
 		self.btnSerial = QPushButton(txt['connect'], self)
-		self.btnSerial.resize(70, 20)
+		self.btnSerial.setMaximumSize(50, 50)
 		#self.btnSerial.move(125, 15)
 		self.btnSerial.clicked.connect(self.click_btnSerial)
 
@@ -681,7 +685,7 @@ class WMain(QWidget):
 		self.status = False
 		self.synced = False
 
-		self.setFixedSize(340, 700)
+		self.resize(340, 700)
 		self.setWindowTitle(txt['title'])
 		self.setStyle(QStyleFactory.create('Fusion'))
 		self.setLayout(self.layoutMain)
@@ -811,20 +815,20 @@ class WMain(QWidget):
 				self.moving[direction] = 0
 		elif direction == 2:
 			if self.moving[direction] == 0:
-				serialwrite(self, ':Mw#')
+				serialwrite(self, ':Me#')
 				self.btnMoveLeft.setText('■')
 				self.moving[direction] = 1
 			else:
-				serialwrite(self, ':Qw#')
+				serialwrite(self, ':Qe#')
 				self.btnMoveLeft.setText('◀')
 				self.moving[direction] = 0
 		elif direction == 3:
 			if self.moving[direction] == 0:
-				serialwrite(self, ':Me#')
+				serialwrite(self, ':Mw#')
 				self.btnMoveRight.setText('■')
 				self.moving[direction] = 1
 			else:
-				serialwrite(self, ':Qe#')
+				serialwrite(self, ':Qw#')
 				self.btnMoveRight.setText('▶')
 				self.moving[direction] = 0
 
